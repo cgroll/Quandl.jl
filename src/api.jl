@@ -22,6 +22,8 @@ function quandlget(id::String; order="des", rows=100, frequency="daily", transfo
         timearray(response) 
     elseif format == "DataFrame"
         dataframe(response)
+    elseif format == "TimeData"
+        convert(AbstractTimedata, timearray(response))
     else
         error("Invalid $format format. If you want this format implemented, please report an issue or submit a pull request.")
     end
